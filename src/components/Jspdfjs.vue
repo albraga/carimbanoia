@@ -36,14 +36,18 @@
 					if (isFrente) {
 						doc.addImage(imgData, 'JPEG', 180, 2, 28, 28)
 						doc.text(total.toString(), 190, 13)
+						if (total > this.firstPage) {
+							doc.addPage()
+						}
+						total--
 					} else {
 						doc.addImage(imgData, 'JPEG', 2, 2, 28, 28)
-						doc.text(total.toString() + 'V', 11, 13)
+						doc.text(this.firstPage.toString() + 'V', 11, 13)
+						if (this.firstPage < total) {
+							doc.addPage()
+						}
+						this.firstPage++
 					}
-					if (total > this.firstPage) {
-						doc.addPage()
-					}
-					total--
 				}
 				doc.save('a4.pdf')
 			}
