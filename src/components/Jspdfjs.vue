@@ -25,7 +25,9 @@
 				for (let x = 0; x <= this.pages; x++) {
 					doc.addImage(imgData, 'JPEG', 180, 2, 28, 28)
 					doc.text(total.toString(), 190, 13)
-					doc.addPage()
+					if (total > this.firstPage) {
+						doc.addPage()
+					}
 					total--
 				}
 				doc.save('a4.pdf')
